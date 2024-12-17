@@ -1,0 +1,820 @@
+//Make a Validations
+<?php
+if(isset($_POST['submit'])):
+    $name = $_POST['first_name'];
+    $lastname = $_POST['last_name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirmpassword = $_POST['confirm_password'];
+
+    if(empty($name) || empty($lastname) || empty($email) || empty($password) || empty($confirmpassword)):
+        $errors['empty'] = "Please enter all the fields";
+    endif;
+    //This will accept a username wirh numbers how to do it without numbers
+    // if(is_numeric($name)):
+    //     echo "First name should not contain numbers";
+
+    //this will disable the white spaces 
+    // if(!ctype_alpha($name)):
+    //     echo "First name should not contain numbers";
+    // endif;
+
+    if (!preg_match("/^[a-zA-Z\s]+$/", $name)):
+        $errors['name'] = "Full name should not contain numbers or special characters<br>";
+    endif;
+    
+    if(is_numeric($lastname)):
+        $errors['last_name'] = "Last name should not contain numbers";
+    endif;
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
+        $errors['email'] = "Please enter a valid email address";
+    endif;
+    //I do not know how to filter the password
+    if(strlen($password)<8 ||!preg_match('/[a-z]/', $password) ||!preg_match('/[A-Z]/', $password) ||!preg_match('/[0-9]/', $password) ||!preg_match('/[@$!%*#?&]/', $password)):
+        $errors['password'] = "Password should be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character.";
+    endif;
+    if($password!= $confirmpassword):
+        $errors['password_match'] = "Password does not match";
+    endif;
+endif;
+//print_r($_POST);
+// if(isset($errors)):
+//     print_r($errors);
+// endif;
+#ternary operator
+$errors=(isset($errors))? $errors:'';
+
+
+
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST">
+            <div class="form-group" >   
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="name" class="form-control"  name="first_name">
+                <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="name" class="form-control"  name="last_name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="text" class="form-control" name="email">
+            </div><div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control"  name="password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Confirm Password</label>
+                <input type="password" class="form-control" name="confirm_password">
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//Please The fill Inputs, Make a Validations and Display the inputs like the below Final Inputs
+
+<?php
+if(isset($_POST['submit'])):
+    $name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $website = $_POST['website'];
+    $comment = $_POST['comment'];
+    $gender = $_POST['gender'];
+    
+
+    if(empty($name) || empty($email) || empty($website) || empty($gender)):
+        echo "Please enter all the fields<br>";
+    endif;
+
+    if (!preg_match("/^[a-zA-Z\s]+$/", $name)):
+        echo "Full name should not contain numbers or special characters<br>";
+    endif;
+    
+    // if(!ctype_alpha($name)):
+    //     echo "First name should not contain numbers<br>";
+    // endif;
+    
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
+        echo "Please enter a valid email address<br>";
+    endif;
+
+    if(!filter_var($website, FILTER_VALIDATE_URL)):
+    echo "Please enter a valid website URL<br>";
+    endif;
+endif;
+//print_r($_POST);
+foreach($_POST as $value):
+    echo $value.'<br>';
+endforeach;
+
+
+
+
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST">
+            <div class="form-group" >   
+                <label for="exampleInputEmail1">Full Name</label>
+                <input type="name" class="form-control"  name="full_name">
+                <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="text" class="form-control" name="email">
+            </div><div class="form-group">
+                <label for="exampleInputURL">Website</label>
+                <input type="name" class="form-control"  name="website">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputComment">Comment</label>
+                <input type="text" class="form-control" name="comment">
+                <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" value="Female">
+    <label class="form-check-label" for="flexRadioDefault1">
+        Female
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" value="Male">
+    <label class="form-check-label" for="flexRadioDefault2">
+        Male
+    </label>
+    
+</div>
+
+
+    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    </form>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+//fill The inputs, Make a validations and display the data in the table in the another page
+<?php
+session_start(['cookie_lifetime' =>60 ,'cookie_path'=> '/', 'cookie_domain' => '', 'cookie_secure' => false, 'cookie_httponly' => false]);
+
+if (isset($_POST['submit'])):
+    session_regenerate_id(true);
+    $userid = $_POST['userid'];
+    $password = $_POST['password'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $country = $_POST['country'];
+    $zipcode = $_POST['zipcode'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+
+    $arr = 
+    [
+        'userid' => $userid,
+        'password' => $password,
+        'name' => $name,
+        'email' => $email,
+        'address' => $address,
+        'country' => $country,
+        'zipcode' => $zipcode,
+        'gender' => $gender,
+    ];
+    
+    isset($language)?$language=$_POST['language']:null;
+    $about = $_POST['about'];
+    
+    if (empty($userid) || empty($password) || empty($name) || empty($email) || empty($country) || empty($zipcode) || empty($email) || empty($gender) || empty($language)):
+        $error['empty'] = "Please enter all the fields";
+    endif;
+
+    if (strlen($userid) < 5 || strlen($userid) > 12):
+        $error['userid'] = "User ID should be between 5 to 12 characters";
+    endif;
+
+    if (strlen($password) < 7 || strlen($password) > 12):
+        $error['password'] = "Password should be between 7 to 12 characters";
+    endif;
+
+    if ($name != preg_match("/^[a-zA-Z\s]+$/", $name)):
+        $error['name'] = "Full name should not contain numbers or special characters";
+    endif;
+
+    if ($zipcode != preg_match("/^[0-9]+$/", $zipcode)):
+        $error['zipcode'] = "Zipcode should only contain numbers";
+    endif;
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)):
+        $error['email'] = "Please enter a valid email address";
+    endif;
+
+    // Ternary operator
+    $errors = (isset($errors)) ? $errors : '';
+
+    if(!isset($_SESSION['data'])){
+        $_SESSION['data'] = [];
+    }
+
+    if(isset($_SESSION['data']) && !in_array($arr, $_SESSION['data'])){
+        $_SESSION['data'][]= $arr;
+
+    }
+
+    header("location:Task_3_solution_page.php");
+endif;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST">
+            <div class="form-group">   
+                <p><?=(isset($error['userid']))? $error['userid']:''; ?></p>
+                <label>User ID</label>
+                <input type="text" class="form-control" name="userid">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" name="address">
+                <div class="form-group">
+    <label >Country</label>
+    <select class="form-control" name="country">
+        <option value="">Select a country</option>
+        <option value="Egypt">Egypt</option>
+        <option value="Qatar">Qatar</option>
+        <option value="UAE">UAE</option>
+    </select>
+</div>
+
+
+            <div class="form-group">
+                <label>ZIP Code</label>
+                <input type="text" class="form-control" name="zipcode">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email">
+            </div>
+
+            <small class="form-text text-muted">Gender</small>
+            <div class="form-check form-check-inline1">
+                <input class="form-check-input" type="radio" name="gender" value="male">
+                <label class="form-check-label">Male</label>
+            </div>
+
+            <div class="form-check form-check-inline1">
+                <input class="form-check-input" type="radio" name="gender" value="female">
+                <label class="form-check-label">Female</label>
+            </div>
+
+            <small class="form-text text-muted">Language</small>
+            <div class="form-check form-check-inline2">
+                <input class="form-check-input" type="checkbox" name="language" value="english">
+                <label class="form-check-label">English</label>
+            </div>
+
+            <div class="form-check form-check-inline2">
+                <input class="form-check-input" type="checkbox" name="language" value="nonenglish">
+                <label class="form-check-label">Non English</label>
+            </div>
+
+            <div class="form-group">
+                <label>About</label>
+                <textarea class="form-control" name="about"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//make a validations and display the errors like this shape
+<?php
+
+if (isset($_POST['submit'])):
+    $password = $_POST['password'];
+    $confirmpassword = $_POST['comfirmpassword'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $details = $_POST['details'];
+    $mobile = $_POST['mobileno'];
+    
+    if (empty($firstname) || empty($password) || empty($lastname) || empty($email) || empty($mobile) || empty($details) || empty($email) || empty($confirmpassword)):
+        $error['empty'] = "Please enter all the fields";
+    endif;
+
+    if (strlen($password) < 7 || strlen($password) > 12):
+        $error['password'] = "Password should be between 7 to 12 characters";
+    endif;
+    if ($password != $confirmpassword):
+        $error['comfirmpassword'] = "Password does not match";
+    endif;
+
+    if ($firstname < 5 ):
+        $error['name'] = "at least 5 characters";
+    endif;
+
+    if ($lastname != preg_match("/^[a-zA-Z\s]+$/", $lastname)):
+        $error['name'] = "Full name should not contain numbers or special characters";
+    endif;
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)):
+        $error['email'] = "Please enter a valid email address";
+    endif;
+
+    if(!filter_var($mobile, FILTER_VALIDATE_INT)):
+        $error['mobileno'] = "Please enter a valid mobile number";
+    endif;
+    // Ternary operator
+    $errors = (isset($error)) ? print_r($error): '';
+endif;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST" action = "C43_AssignmentThree_Task4.php">
+
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="firstname">
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastname">
+        </div>
+        <div class="form-group">
+            <label>Mobile No</label>
+            <input type="number" class="form-control" name="mobileno">
+        </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" name="comfirmpassword">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email">
+            </div>
+
+            <div class="form-group">
+                <label>Details</label>
+                <textarea class="form-control" name="details"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//
+<?php
+if (isset($_POST['submit'])):
+    $title = $_POST['title'];
+    $price = $_POST['price'];
+    $quantity = $_POST['quantity'];
+    $description = $_POST['description'];
+    $image = $_POST['image'];
+    
+    if (empty($title) || empty($price) || empty($quantity) || empty($description) || empty($image)):
+        $error['empty'] = "Please enter all the fields";
+    endif;
+
+    if (!is_string($title)):
+        $error['title'] = "Must be string";
+    endif;
+    
+    if (!is_numeric($price) || $price <= 0):
+        $error['price'] = "Must be positive number";
+    endif;
+    if ($quantity <= 0):
+        $error['quantity'] = "Must be positive number";
+    endif;
+    
+    if (!empty($image['name'])):
+        $imageName = $image['name'];
+        $imageSize = $image['size'];
+        $imageTmp = $image['tmp_name'];
+        $imageExtension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
+    endif;
+        $allowedExtensions = ['jpg', 'jpeg'];
+        if (!in_array($imageExtension, $allowedExtensions)):
+            $error['image_extension'] = "Only JPG files are allowed.";
+        endif;
+        
+        if ($imageSize > 5 * 1024 * 1024): 
+            $error['image_size'] = "Image size must be less than 5MB.";
+        endif;
+
+        $uploadDir = 'uploads/';
+        $uploadPath = $uploadDir . basename($imageName);
+        if (file_exists($uploadPath)):
+            $error['image_exists'] = "An image with this name already exists. Please rename your file.";
+        endif;
+
+
+    
+    // Ternary operator
+    $errors = (isset($error)) ? print_r($error): '';
+endif;
+
+print_r($_POST);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST" >
+
+        <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" name="title">
+        </div>
+        <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" name="description">
+        </div>
+        <div class="form-group">
+        <label>Price</label>
+        <input type="text" class="form-control" name="price">
+        </div>
+        <div class="form-group">
+        <label>Quantity</label>
+        <input type="text" class="form-control" name="quantity">
+        </div>
+
+        <div class="form-group mb-3">
+        <label >Upload Image (JPG only, max size 5MB)</label>
+        <input type="file" class="form-control" name="image">
+            </div>
+
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//make a validations and check if user is found or not and display the result in the same file above the login form using alert java script 
+if (isset($_POST['submit'])):
+    $user = [
+    ['username' => 'admin', 'password' => 'password'],
+    ['username' => 'user1', 'password' => 'user1'],
+    ['username' => 'user2', 'password' => 'user2']];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if (empty($username) || empty($password)):
+        $error['empty'] = "Please enter all the fields";
+    endif;
+    
+    foreach ($user as $user):
+        if ($user['username'] === $username && $user['password'] === $password):
+            echo "Great! You are Found";
+            break;
+            endif;
+        endforeach;
+    
+
+
+    
+    // Ternary operator
+    $errors = (isset($error)) ? print_r($error): '';
+endif;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST" >
+
+        <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="form-control" name="username">
+        </div>
+        <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//Make a simple calculator like (add, sub, div, multi, Mod) 
+<?php
+if (isset($_POST['submit'])):
+    $firstnum  = $_POST['firstnum'] ;
+    $secondnum = $_POST['secondnum'];
+    $operator  = $_POST['operator'] ;
+    $result ='';
+
+    if(empty ($firstnum) || empty ($secondnum) || empty ($operator)):
+        $error['empty'] = "Please enter all the fields";
+    endif;
+
+    switch ($operator) {
+        case '+':
+            $result = $firstnum + $secondnum;
+            break;
+        case '-':
+            $result = $firstnum - $secondnum;
+            break;
+        case '*':
+            $result = $firstnum * $secondnum;
+            break;
+        case '/':
+            if ($secondnum == 0) {
+                $error['zero'] = "Cannot divide by zero";
+                break;
+            }
+            $result = $firstnum / $secondnum;
+            break;
+        case '%':
+            $result = $firstnum % $secondnum;
+            break;
+        default:
+            $error['invalid'] = "Invalid operator";
+    }
+
+echo $result."<br>";    
+    // Ternary operator
+    $errors = (isset($error)) ? print_r($error): '';
+endif;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST" >
+
+        <div class="form-group">
+        <label>First Num</label>
+        <input type="number" class="form-control" name="firstnum">
+        </div>
+        <div class="form-group">
+        <label>Second Num</label>
+        <input type="number" class="form-control" name="secondnum">
+    </div>
+    
+    <div class="form-group mb-3">
+                <label>Operator</label>
+                <select class="form-control" name="operator">
+                    <option value="">Select an operator</option>
+                    <option value="+">Add (+)</option>
+                    <option value="-">Subtract (-)</option>
+                    <option value="*">Multiply (*)</option>
+                    <option value="/">Divide (/)</option>
+                    <option value="%">Mod (%)</option>
+                </select>
+            </div>
+
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//Display a Secret Message It’s called (Hello World) From this form in the Another page 
+<?php
+if (isset($_POST['submit'])):
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $secrertmessage = 'Hello World!';
+    if (empty($firstname) || empty($lastname)):
+        $error['empty'] = "Please enter all the fields";
+    endif;
+    
+    echo $secrertMessage;
+    // Ternary operator
+    $errors = (isset($error)) ? print_r($error): '';
+endif;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <form method="POST" action="SecretMessage_page.php" >
+
+        <div class="form-group">
+        <label>First Name</label>
+        <input type="text" class="form-control" name="firstname">
+        </div>
+        <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="lastname">
+        </div>
+        
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//Send the message via link like (http://localhost/handle.php) without using a form html
+<?php 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message via Link</title>
+</head>
+<body>
+    <a href="http://localhost/handle.php">Click Here</a>
+</body>
+</html>
+
+
+//First store the data about (Parent Name, Children’s Name) in Array Called Data And display the data 
+<?php
+ $data = [
+    ['father' => 'belal','child' => 'zain'],
+    ['father' => 'rohayem','child' => 'adwya']
+];
+
+if (isset($_POST['submit'])):
+    $father = $_POST['father'];
+    $child = $_POST['child'];
+
+    $father = $_POST['father'];
+    $child = $_POST['child'];
+    if (empty($father) || empty($child)):
+        $error['empty'] = "Please enter all the fields";
+    endif;
+    
+    foreach ($data as $key => $value):
+        if ($value['father'] === $father && $value['child'] === $child):
+            echo "Great! You are Found";
+            break;
+        else:
+            $error['notfound'] = "Not Found";
+            endif;
+        endforeach;
+    
+
+
+    
+    // Ternary operator
+    $errors = (isset($error)) ? print_r($error): '';
+endif;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<form method="POST">
+        <label >Father</label>
+        <input type="text" name="father">
+        <label >Child</label>
+        <input type="child" name="child">
+        <input type="submit" value="Submit" name="submit">
+    </form>
+<table class="table">
+<thead>
+    <tr>
+    <th scope="col">#</th>
+    <th scope="col">Father</th>
+    <th scope="col">Child</th>
+    </tr>
+</thead>
+<tbody>
+    <?php foreach($data as $key => $value):?>
+    <tr>
+    <th scope="row">1</th>
+    <td><?= $value['father']; ?></td>
+    <td><?= $value['child']; ?></td>
+    </tr>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
+</table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+//
+
