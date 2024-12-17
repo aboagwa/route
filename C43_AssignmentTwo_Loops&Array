@@ -1,0 +1,361 @@
+<?php 
+//1.Create a script using a for loop to add all the integers between 0 and 30 and display the total.
+
+$total = 0;
+for($i = 0;$i <= 30; $i++)
+{
+    $total = $total + $i;
+}
+echo $total."<br>";
+
+//2.Write a program which will count the “t” characters in the text “techstudy”
+$char = 't';
+$text = 'techstudy';
+$count = 0;
+for ($i = 0; $i < strlen($text);$i++)
+{
+    if ($text[$i] == $char)
+    {
+        $count++;
+    }
+}
+echo $count.'<br>';
+
+//3.Write a PHP script to convert lowercase string to uppercase
+$string = readline();
+//$string ="hfrbvkfvbjbx" ;
+$upper_string = strtoupper($string);
+echo $upper_string.'<br>';
+
+//4.Write a PHP script to extract the user name from the email ID
+$email = readline();
+//$email = "mo@gmail.com";
+$user_name = strstr($email,'@',true);
+echo $user_name.'<br>';
+
+//5.Write a PHP script to get the last three characters of a string
+
+$string = readline();
+$string = 'hello abcd';
+echo substr($string,-3).'<br>';
+
+/*
+$last_three = readline();
+$last_three = 'abcdelll';
+for($i= strlen($last_three)-3;$i < strlen($last_three);$i++)
+{
+    print_r($last_three[$i]);
+}
+echo '<br>';
+*/
+
+
+//6.	Write a PHP script to replace the first ‘the’ of the following string with ‘best
+//$the_replace = readline();
+$the_replace = "the quick brown fox jumps over the lazy dog";
+$best_replaced = str_replace("the","best",$the_replace);
+echo $best_replaced.'<br>';
+
+//7.Write a PHP script to remove a part of a string from the beginning
+$part_begining = readline();
+$part_begining = "hello world";
+$new_part = substr($part_begining,5);
+echo $new_part.'<br>';
+
+//8.Write a PHP script to remove comma(s) from the following numeric string
+$string = readline();
+$string = "5,6,7,8,9";
+
+$numbers = str_replace(',','',$string);
+echo $numbers.'<br>';
+
+//9.Write a PHP script to get the first word of a sentence
+$statement = readline();
+$statement = "The quick brown fox jumps over the lazy dog";
+
+$token = strtok($statement," "); //strtok($string you will work on , "the place you want to separate")
+echo $token.'<br>';
+
+//10.	Write a program to convert the given string into an array. Suppose the string is -$a = 'Burch Jr, Philip H., The American es
+$string = readline();
+$string = 'Burch Jr, Philip H., The American es';
+$splitted_string = explode(' ',$string);
+print_r( $splitted_string);
+echo '<br>';
+
+//11.Write a PHP program to print all alphabets from a to z. – using while loop #it is working forever 
+
+// $letter = 'a';
+// while($letter >= ord('a') || $letter <= ord('z'))
+// {
+//     echo $letter.'<br>';
+//     $letter++;
+// }
+
+//12.Write a PHP program to find first and last digit of a number.
+$number = readline();
+$number = '123456789';
+
+$fist_digit = $number[0];
+$last_digit = $number[-1];
+
+echo $fist_digit.'<br>';
+echo $last_digit.'<br>';
+
+//13.Write a PHP program to find sum of first and last digit of a number.
+$number = readline();
+$number = '123456789';
+
+$fist_digit = $number[0];
+$last_digit = $number[-1];
+
+echo $fist_digit.'<br>';
+echo $last_digit.'<br>';
+echo $sum =$fist_digit+$last_digit.'<br>';
+
+//14.Write a PHP program to swap first and last digits of a number.
+$num = readline();
+$num = "123456789";
+
+$first_digit = $num[0];
+$last_digit = $num[-1];
+
+$middle = substr($num,1,-1);
+
+$new_num = $last_digit.$middle.$first_digit;
+echo $new_num."<br>";
+
+
+//15.Write a PHP program to check whether a number is palindrome or not.
+$num = readline();
+$num = "12321";
+
+$palin_num = strrev($num);
+
+if($num == $palin_num):
+    echo "Palindrome".'<br>';
+else:    
+    echo "Not Palindrome"."<br>";
+endif;
+
+//17.Write a PHP program to convert Octal to Binary number system.
+
+$oct_num = readline();
+$oct_num = "7";
+
+$dec_num =  octdec($oct_num);
+echo $dec_num.'<br>';
+
+$bi_num = decbin($dec_num);
+
+echo $bi_num.'<br>';
+
+
+//Write a PHP script which will display the colors in the following way :Output :white, green, red,
+
+
+$colors = ['white','green','red',];
+
+print_r($colors);
+echo '<br>';
+
+foreach($colors as $key => $value):
+    echo $value.' ';
+endforeach;
+echo '<br>';
+
+sort($colors); #I serched for this function in php // Sort the colors alphabetically
+
+foreach($colors as $key => $value):
+    echo $value.'<br>';
+endforeach;
+
+//Create a PHP script which displays the capital and country name from the above array $ceu. Sort the list by the capital of the country.
+$ceu = ["Italy"=>"Rome", "Luxembourg"=>"Luxembourg", "Belgium"=> "Brussels", "Denmark"=>"Copenhagen", "Finland"=>"Helsinki", "France" => "Paris", "Slovakia"=>"Bratislava", "Slovenia"=>"Ljubljana", "Germany" => "Berlin", "Greece" => "Athens", "Ireland"=>"Dublin", "Netherlands"=>"Amsterdam", "Portugal"=>"Lisbon", "Spain"=>"Madrid", "Sweden"=>"Stockholm", "United Kingdom"=>"London", "Cyprus"=>"Nicosia", "Lithuania"=>"Vilnius", "Czech Republic"=>"Prague", "Estonia"=>"Tallin", "Hungary"=>"Budapest", "Latvia"=>"Riga", "Malta"=>"Valetta", "Austria" => "Vienna", "Poland"=>"Warsaw"];
+
+foreach($ceu as $key =>$value):
+    echo 'The capital of '.$key .' is '. $value.'<br>';
+endforeach;
+
+//Delete an element from the above PHP array. After deleting the element, integer keys must be normalized.
+$arr = [1,2,3,4,5];
+print_r($arr);
+echo '<br>';
+
+unset($arr[0]);
+print_r($arr);
+echo '<br>';
+
+array_splice($arr,3); //normalized.
+print_r($arr);
+
+echo '<br>';
+
+//Write a PHP script to get the first element of the above array.
+$color =[4 => 'white', 6 => 'green', 11=> 'red'];
+
+echo array_values($color)[0].'<br>';
+
+//Write a PHP script that inserts a new item in an array in any position.
+$arr = [1,2,3,4,5];
+
+array_splice($arr,5,0,22); #0 is the $length, which indicates that you do not want to remove any elements from the array.
+
+foreach($arr as $value):
+    echo $value.' ';
+endforeach;
+
+//Write a PHP script to sort the following associative array 
+$arr = ["Sophia"=>"31","Jacob"=>"41","William"=>"39","Ramesh"=>"40"];
+print_r($arr);
+echo "<br>";
+
+asort($arr);
+
+foreach($arr as $key => $value):
+    echo $key.' '.$value.'<br>';
+endforeach;
+echo '<br>';
+
+ksort($arr);
+
+foreach($arr as $key => $value):
+    echo $key.' '.$value.'<br>';
+endforeach;
+echo '<br>';
+
+arsort($arr);
+
+foreach($arr as $key => $value):
+    echo $key.' '.$value.'<br>';
+endforeach;
+echo '<br>';
+
+ksort($arr);
+
+foreach($arr as $key => $value):
+    echo $key.' '.$value.'<br>';
+endforeach;
+echo '<br>';
+
+//7Write a PHP program to merge (by index) the following two arrays.
+$array1 = [[77, 87],[23, 45]];
+$array2 = ["w3resource", "com"];
+
+$merged_array = array_merge($array1, $array2);
+
+print_r($merged_array);
+echo '<br>';
+
+//I did not solve Q8
+// $color = ['A' => 'Blue', 'B' => 'Green', 'c' => 'Red'];
+
+// array_change_key_case($color, CASE_LOWER);
+// print_r($color);
+// echo '<br>';
+
+// array_change_key_case($color,CASE_UPPER);
+// print_r($color);
+// echo '<br>';
+
+//Write a PHP script to get the shortest/longest string length from an array
+
+$arr = ["abcd","abc","de","hjjj","g","wer"];
+
+// the 'array_map' will apply the 'strlen' function to each element in $arr
+
+$mapped_array =array_map('strlen',$arr);
+
+echo 'The longest '.max($mapped_array);
+echo '<br>';
+
+echo 'The shortest '.min($mapped_array);
+echo '<br>';
+
+//I did not get the question 10
+$arr = ['The   ','power','of','    authority'];
+print_r($arr);
+echo '<br>';
+
+array_walk($arr,function($value) 
+{
+    $value = trim($value);
+});
+
+print_r($arr);
+echo '<br>';
+
+//Write a PHP program to remove duplicate values from an array which contains only strings or only integers.
+$a=["a"=>"red","b"=>"green","c"=>"red"];
+print_r(array_unique($a));
+echo '<br>';
+
+//Write a PHP script to remove all white spaces in an array.
+$a = ["red", "green", "red", " ", " ", " ", " ", " "];
+$a_new = array_filter(array_map('trim', $a));
+print_r($a_new);
+echo '<br>';
+
+//13 Write a PHP script to combine (using one array for keys and another for its values) the following two arrays.('x', 'y', 'y'), (10, 20, 30)
+$keys_array= ['x', 'y', 'y'];
+$values_array = [10, 20, 30];
+
+$combined_array = array_combine($keys_array, $values_array);
+print_r($combined_array);
+echo '<br>';
+
+//14 How to check if an array is a subset of another in PHP?
+
+$array1 = ["a", "b"];
+$array2 = ["c", "d", "e", "a"];
+print_r(array_diff ($array1, $array2));
+echo '<br>';
+
+function issubset($array1, $array2)
+{
+    return empty(array_diff($array1, $array2));
+}
+
+if(issubset($array1, $array2)):
+    echo "Array 1 is a subset of Array 2";
+else:
+    echo "Array 1 is not a subset of Array 2";
+endif;
+echo '<br>';
+
+//15Write a PHP program to copy all elements from an array to another array.
+$arr = [1, 2, 3,4,5];
+$copy_arr = [];
+
+foreach ($arr as $value) {
+    $copy_arr[] = $value;
+}
+
+print_r($copy_arr);
+
+echo '<br>';
+
+//16 Write a PHP program to merge two array to third array.
+
+$array1 = [1, 2, 3];
+$array2 = [4, 5, 6];
+
+$array3 = array_merge($array1, $array2);
+print_r($array3);
+echo '<br>';
+
+
+//display 
+
+$array1 = [
+    "Roman" => ["One"=>" I","Two"=>"II","Three"=>"III",'Four'=>'IV'],
+    "Arabic" => ["One"=>"1","Two"=>"2","Three"=>"3",'Four'=>'4'],
+];
+print_r($array1);
+echo '<br>';
+
+// I want to ask in Questions 18, 19, 20
+
+
+
+?>
