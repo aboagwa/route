@@ -1,0 +1,408 @@
+<?php
+//1.Write a PHP program to find maximum between two numbers.
+$num_1 = 10;
+$num_2 = 20;
+if($num_1 > $num_2){
+    echo "Number 1 is greater than Number 2<br>";
+    // print_r($num_1);
+}
+else{
+    echo "Number 2 is greater than Number 1<br>";
+}
+//2.Write a PHP program to find maximum between three numbers.
+
+$number_1 = 10;
+$number_2 = 20;
+$number_3 = 30;
+
+if(max($number_1, $number_2, $number_3) == $number_1){
+
+    echo "Number_1 is the greatest<br>";
+}
+elseif(max($number_1,$number_2,$number_3) == $number_2){
+    echo "Number_2 is the greatest<br>";
+}
+else{
+    echo "Number_3 is the greatest<br>";
+}
+
+//3.Write a PHP program to check whether a number is negative, positive or zero.
+$num = 0;
+if($num == 0){
+    echo "Number is zero<br>";
+}
+elseif($num > 0){
+
+    echo "Number is Positive<br>";
+}
+else{
+    echo "Number is Negative<br>";
+}
+
+//4.Write a PHP program to check whether a number is divisible by 5 and 11 or not.
+$num_55 = 55;
+if($num_55%5 == 0 && $num_55 % 11 == 0){
+    echo "The number  is divisible by 5 and 11<br>";
+}
+else{
+    echo "The number is not divisible by 5 and 11<br>";
+} 
+
+//5.Write a PHP program to check whether a number is even or odd.
+$num_type = 10;
+if($num_type%2 == 0){
+    echo "The number is even<br>";
+}
+else{
+    echo "The number is odd<br>";
+}
+
+//6.Write a PHP program to check whether a year is leap year or not.
+$year = 2024;
+if($year%4 == 0 && $year%100 != 0 || $year%400 == 0){
+    echo "The year is a leap year<br>";
+}
+else{
+    echo "The year is not a leap year<br>";
+}
+
+//7.Write a PHP program to check whether a character is alphabet or not.
+$char = "a";
+if(ctype_alpha($char) == true){
+    echo "The character is an alphabet<br>";
+}
+else{
+    echo "The character is not an alphabet<br>";
+}
+
+//8.Write a PHP program to input any alphabet and check whether it is vowel or consonant. 
+$char_type = readline("Enter a character:");
+if($char_type == "a" || $char_type == "e" || $char_type == "i" || $char_type == "o" || $char_type == "u" || $char_type == "A" || $char_type == "E" || $char_type == "I" || $char_type == "O" || $char_type == "U"){ 
+    echo "The character is vowel <br>";
+}
+else{
+    echo "The character is consonant <br>";
+}
+
+//9.Write a PHP program to input any character and check whether it is alphabet, digit or special character.
+$char_type = readline("Enter your character:");
+
+if(is_numeric($char_type)==true){
+    echo "The character is a digit <br>";
+}
+else if(ctype_alpha($char_type)== true){
+    echo "The character is an alphabet <br>";
+}
+else{
+    echo "The character is a special character <br>";
+}
+
+//10.Write a PHP program to check whether a character is uppercase or lowercase alphabet.
+$char_case = "A";
+if(ctype_upper($char_case) == true){
+    echo "The character is an uppercase<br>";
+}
+else{
+    echo"The character is a lower case<br>";
+}
+//11.Write a PHP program to input day number and print week day.
+$day_number = readline("Enter the day number form 1 to 7:");
+
+switch($day_number){
+    case 1:
+        echo "Weekday is saterday<br>";
+        break;
+    case 2:
+        echo "Weekday is Sunday<br>";
+        break;
+    case 3:
+        echo "Weekday is Monday<br>";
+        break;
+    case 4:
+        echo "Weekday is Tuseday<br>";
+        break;
+    case 5:
+            echo "Weekday is Wednesday<br>";
+        break;
+    case 6:
+        echo "Weekday is Thursday<br>";
+        break;
+    case 7:
+        echo "Weekday is Friday<br>";
+        break;
+    default:
+        echo "Invalid day number<br>";
+        break;
+}
+
+//12.Write a PHP program to input month number and print number of days in that month.
+$month_number = readline("Enter the Month Number from 1 to 12:");
+
+switch($month_number){
+    case 1:
+        echo "Month is January";
+        break;
+    case 2:
+        echo "Month is February";
+        break;
+    case 3:
+        echo "Month is March";
+        break;
+    case 4:
+        echo "Month is April";
+        break;
+    case 5:
+        echo "Month is May";
+        break;
+    case 6:
+        echo "Month is June";
+        break;
+    case 7:
+        echo "Month is July";
+        break;
+    case 8:
+        echo "Month is August"; 
+        break;  
+    case 9: 
+        echo "Month is September";
+        break;
+    case 10:
+        echo "Month is October";
+        break;
+    case 11:
+        echo "Month is November";
+        break;
+    case 12:    
+        echo "Month is December"; 
+        break;
+    default:
+        echo "Invalid month number<br>";
+        break;
+}
+
+//13.Write a PHP program to count total number of notes in given amount.
+$amount = 1300;
+
+if($amount>=200){
+    $notes_200 =(int) $amount/200;
+    $amount = $amount - ($notes_200*200);
+    echo "Notes of 200 are: ".$notes_200."<br>";
+}
+elseif($amount >= 100){
+    $notes_100 =(int) $amount/100;
+    $amount = $amount - ($notes_100*100);
+    echo "Notes of 100 are: ".$notes_100."<br>";
+}
+elseif($amount >=50){
+    $notes_50 =(int) $amount/50;
+    $amount = $amount - ($notes_50*50);
+    echo "Notes of 50 are: ".$notes_50."<br>";
+}
+
+elseif($amount >=20){
+    $notes_20 =(int) $amount/20;
+    $amount = $amount - ($notes_20*20);
+    echo "Notes of 20 are: ".$notes_20."<br>";
+}
+elseif($amount >=10){
+    $notes_10 =(int) $amount/10;
+    $amount = $amount - ($notes_10*10);
+    echo "Notes of 10 are: ".$notes_10."<br>";
+}
+elseif($amount >=5){
+    $notes_5 =(int) $amount/5;
+    $amount = $amount - ($notes_5*5);
+    echo "Notes of 5 are: ".$notes_5."<br>";
+}
+elseif($amount >=1){
+    $notes_1 =(int) $amount/1;
+    $amount = $amount - ($notes_1*1);
+    echo "Notes of 1 are: ".$notes_1."<br>";
+}
+
+
+//14.How can you write a switch statement to handle different user roles in PHP?
+$role = readline("Enter your role: ");
+switch ($role) {
+    case "Instactor":
+        echo "Your Jd is : xzx<br>";
+        break;
+    case "Mentor":
+        echo "Your Jd is : abc<br>";
+        break;
+    default:
+        echo "Your Jd is : zzz<br>";
+        break;
+    }
+
+//15.How can you use || (OR) to check for multiple conditions in PHP?
+$role = readline("Enter your role: ");
+$authority = readline("Enter your authority: ");
+if($role == "Instactor" || $authority == "Admin"){
+    echo "You can access the system<br>";
+}
+else{
+    echo "You cannot access the system<br>";
+}
+//16.Write a PHP program to input angles of a triangle and check whether triangle is valid or not.
+$angle_1 = readline("Enter the angle 1 degree");
+$angle_2 = readline("Enter the angle 2 degree");
+$angle_3 = readline("Enter the angle 3 degree");
+
+if($angle_1 + $angle_2 +$angle_3 == 180){
+    echo "You have a valid Triangle <br>";
+}
+else{
+    echo "You have an invalid Triangle <br>";
+}
+    
+//17.	Write a PHP program to input all sides of a triangle and check whether triangle is valid or not.
+$side_1 = readline("Enter the first side:");
+$side_2 = readline("Enter the second side:");
+$side_3 = readline("Enter the third side:");
+
+if($side_1 + $side_2 > $side_3 || $side_1 + $side_3 > $side_2 || $side_2 + $side_3 > $side_1){
+    echo "You have a valid Triangle <br>";
+}
+else{
+    echo "You have an invalid Triangle <br>";
+}
+
+//18.	Write a PHP program to check whether the triangle is equilateral, isosceles or scalene triangle.
+$angle_1 = readline("Enter the angle 1 degree");
+$angle_2 = readline("Enter the angle 2 degree");
+$angle_3 = readline("Enter the angle 3 degree");
+
+if($angle_1 == $angle_2 && $angle_2 == $angle_3){
+    echo "Your triangle is equilateral <br>";
+}
+if($angle_1 == $angle_2 || $angle_2 == $angle_3 || $angle_1 == $angle_3){
+    echo "Your triangle is isosceles<br> ";
+}
+else{
+    echo "Your triangle is scalene <br>";
+}
+
+//19.Write a PHP program to find all roots of a quadratic equation.
+
+$a = readline("Enter the value of a: ");
+$b = readline("Enter the value of b: ");
+$c = readline("Enter the value of c: ");
+$d = ($b**2)*4*$a*$c;
+if($d>0){
+    echo "R1 will equal :".(-$b + sqrt($d)/(2*$a));
+    echo "R2 will equal :".(-$b - sqrt($d)/(2*$a));
+}
+else if($d==0){
+    if((2*$a)==0){
+        echo "We can not divid by zero.<br>";
+    }
+    else{
+        echo "R1 will equal :".-$b/(2*$a);
+        echo "R2 will equal :".-$b/(2*$a);
+    }
+}
+else{
+
+    echo "Roots are Imaginary";
+}
+//20.Write a PHP program to calculate profit or loss.
+$revenue = readline("Enter the revune:");
+$cost = readline("Enter the cost:");
+if($revenue > $cost){
+    echo "The profit is : ".($revenue - $cost)."<br>";
+}
+elseif($revenue == $cost){
+    echo "There is not profit or loss<br>";
+}
+else{
+    echo "The loss is : ".($cost - $revenue)."<br>";
+}
+
+//21.	Write a PHP program to input marks of five subjects Physics, Chemistry, Biology, Mathematics and Computer. Calculate percentage and grade according to following:
+$Physics = readline("Enter your Physics marks: ");
+$Chemistry = readline("Enter your Chemistry marks: ");
+$Biology = readline("Enter your Biology marks: ");
+$Mathematics = readline("Enter your Mathematics marks: ");
+$Computer = readline("Enter your Computer marks: ");
+$total_marks = $Physics + $Chemistry + $Biology + $Mathematics + $Computer;
+$percentage = ($total_marks/5)*100;
+
+if($percentage >=90){
+    echo "Your grade is A<br>";
+}
+else if($percentage >=80){
+    echo "Your grade is B<br>";
+}
+elseif($percentage >=70){
+    echo "Your grade is C<br>";
+}
+
+else if($percentage >= 60){
+    echo "Your grade is D<br>";
+}
+elseif($percentage >= 40){
+    echo "Your grade is E<br>";
+}
+else{
+    echo "Your grade is F<br>";
+}
+//22.Write a PHP program to input basic salary of an employee and calculate its Gross salary according to following:
+$basic_salary = readline("Enter You basic salary: ");
+$hra;
+$da;
+if($basic_salary <= 10000){
+    $hra = $basic_salary * 0.2;
+    $da = $basic_salary * 0.8;
+    echo "Your gross salary is :".($basic_salary +$hra+$da)."<br>";
+}
+elseif($basic_salary <= 20000){
+        $hra = $basic_salary * 0.25;
+        $da = $basic_salary * 0.9;
+        echo "Your gross salary is :".($basic_salary +$hra+$da)."<br>";
+}
+elseif($basic_salary > 20000){
+            $hra = $basic_salary * 0.3;
+            $da = $basic_salary * 0.95;
+            echo "Your gross salary is :".($basic_salary +$hra+$da)."<br>";
+}
+
+//23.Write a PHP program to input electricity unit charges and calculate total electricity bill according to the given condition:
+$rs = readline("Enter the Rs: ");
+$net_bill;
+$total_bill;
+$first_category;
+$second_category = $rs - 50;
+$third_category = $rs - 150;
+$fourth_category = $rs - 250;
+$charges = .2;
+
+if($rs <= 50){
+    $first_category = $rs*.5;
+    $net_bill = $first_category;
+    $total_bill = $net_bill+($net_bill * $charges);
+    echo "Your bill is : ".$total_bill."<br>";
+}
+elseif($rs<= 150){
+    $first_category = 50*.5;
+    $net_bill = $second_category*.75 + $first_category;
+    $total_bill = $net_bill+($net_bill*$charges);
+    echo "Your bill is : ".$total_bill."<br>";
+}
+
+elseif($rs <= 250){
+    $first_category = 50*.5;
+    $second_category = $second_category*.75;
+    $net_bill = $third_category*1.2 + $second_category + $first_category;
+    $total_bill = $net_bill+($net_bill*$charges);
+    echo "Your bill is : ".$total_bill."<br>";
+}
+elseif($rs > 250){
+    $first_category = 50*.5;
+    $second_category = $second_category*.75;
+    $third_category = $third_category*1.2;
+    $net_bill = $fourth_category*1.5 + $third_category + $second_category + $first_category;
+    $total_bill = $net_bill+($net_bill*$charges);
+    echo "Your bill is : ".$total_bill."<br>";
+}
+?>
